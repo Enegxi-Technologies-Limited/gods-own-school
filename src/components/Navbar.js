@@ -59,7 +59,7 @@ export default function Navbar() {
           href="/admission"
           className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90 md:inline-block"
         >
-          Apply Now
+          Admission
         </Link>
 
         <button
@@ -94,7 +94,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="block rounded-lg bg-accent px-3 py-2 text-center text-sm font-medium text-white"
             >
-              Apply Now
+              Admission
             </Link>
           </li>
         </ul>

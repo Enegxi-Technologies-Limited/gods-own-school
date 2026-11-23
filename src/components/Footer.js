@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -5,7 +6,16 @@ export default function Footer() {
     <footer className="bg-navy text-white">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
         <div>
-          <h3 className="font-semibold">God&apos;s Own Secondary School</h3>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/logo.jpeg"
+              alt="God's Own Secondary School logo"
+              width={56}
+              height={56}
+              className="rounded-lg"
+            />
+            <h3 className="font-semibold">God&apos;s Own Secondary School</h3>
+          </div>
           <p className="mt-2 text-sm text-white/70">
             Chastity, Sedulity and Tranquility
           </p>
