@@ -1,87 +1,94 @@
-import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
+import GalleryGrid from "@/components/GalleryGrid";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = {
-  title: "Gallery | God's Own Secondary School",
-};
+export const metadata = pageMetadata({
+  title: "Gallery",
+  description:
+    "Photos and videos of students, teachers, cultural festivals and graduation ceremonies at God's Own Secondary School, Aaye Town, Akure.",
+  path: "/gallery",
+});
 
-const photos = [
+const categories = ["Students", "Cultural", "Graduation", "School", "Videos"];
+
+const items = [
   {
     src: "/images/students.jpeg",
     alt: "Students of God's Own Secondary School in uniform",
-    caption: "Our Students In School Uniform",
+    caption: "Our students in school uniform",
+    category: "Students",
   },
-
   {
     src: "/images/more-students.jpg",
     alt: "Students of God's Own Secondary School in uniform",
-    caption: "Our Students In School Uniform",
+    caption: "Our students in school uniform",
+    category: "Students",
   },
-
   {
     src: "/images/mores-students.jpg",
     alt: "Students of God's Own Secondary School in uniform",
-    caption: "Our Students In School Uniform",
+    caption: "Our students in school uniform",
+    category: "Students",
   },
-
-   {
+  {
     src: "/images/graduate.jpeg",
     alt: "Graduating students of God's Own Secondary School",
-    caption: "Our Graduating Class",
+    caption: "Our graduating class",
+    category: "Graduation",
   },
-
-   {
+  {
     src: "/images/graduate2.jpeg",
     alt: "Graduating students of God's Own Secondary School",
-    caption: "Our Graduating Class",
+    caption: "Our graduating class",
+    category: "Graduation",
   },
-
-   {
+  {
     src: "/images/cultural.jpeg",
     alt: "Cultural event at God's Own Secondary School",
-    caption: "Our Cultural Festival",
+    caption: "Our cultural festival",
+    category: "Cultural",
   },
-
   {
     src: "/images/Native.jpeg",
-    alt: "Cultural event at God's Own Secondary School",
-    caption: "Our Cultural Festival",
+    alt: "Students in traditional attire at the cultural festival",
+    caption: "Our cultural festival",
+    category: "Cultural",
   },
-
   {
     src: "/images/Building.jpeg",
     alt: "Building at God's Own Secondary School",
-    caption: "Our School Building",
+    caption: "Our school building",
+    category: "School",
   },
-
   {
     src: "/images/Teacher.jpeg",
     alt: "Teacher at God's Own Secondary School",
-    caption: "Our Dedicated Teachers",
+    caption: "Our dedicated teachers",
+    category: "School",
   },
-
-    {
+  {
     type: "video",
     src: "/videos/chlorography.mp4",
     poster: "/images/Native.jpeg",
     alt: "Students performing at the cultural festival",
-    caption: "Cultural Festival Highlights",
+    caption: "Cultural festival highlights",
+    category: "Videos",
   },
-
   {
     type: "video",
     src: "/videos/chlorography2.mp4",
     poster: "/images/cultural.jpeg",
     alt: "Students performing at the cultural festival",
-    caption: "Cultural Festival Highlights",
+    caption: "Cultural festival highlights",
+    category: "Videos",
   },
-
   {
     type: "video",
     src: "/videos/school-uniform.mp4",
     poster: "/images/students.jpeg",
-    alt: "Students of God's Own Secondary School in uniform",
-    caption: "Our Students Performing In School Uniform",
+    alt: "Students of God's Own Secondary School performing in uniform",
+    caption: "Our students performing in school uniform",
+    category: "Videos",
   },
 ];
 
@@ -91,39 +98,12 @@ export default function GalleryPage() {
       <PageHeader
         title="Gallery"
         subtitle="Moments from life at God's Own Secondary School."
+        path="/gallery"
+        image="/images/more-cultural.jpg"
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {photos.map((photo) => (
-            <figure
-              key={photo.src}
-              className="overflow-hidden rounded-xl border border-navy/10 bg-white"
-            >
-              <div className="relative aspect-[4/3]">
-                {photo.type === "video" ? (
-                  <video
-                    src={photo.src}
-                    poster={photo.poster}
-                    controls
-                    preload="metadata"
-                    aria-label={photo.alt}
-                    className="h-full w-full bg-black object-contain"
-                  />
-                ) : (
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                )}
-              </div>
-
-            </figure>
-          ))}
-        </div>
+      <section className="mx-auto max-w-6xl px-4 py-16">
+        <GalleryGrid items={items} categories={categories} />
       </section>
     </>
   );

@@ -5,7 +5,7 @@ import { useState } from "react";
 const emptyForm = { name: "", email: "", phone: "", message: "", website: "" };
 
 const inputClass =
-  "mt-1 w-full rounded-lg border border-navy/20 bg-white px-3 py-2 text-sm text-gray-800 outline-none focus:border-navy focus:ring-2 focus:ring-navy/20";
+  "mt-1.5 w-full rounded-xl border border-navy/15 bg-paper px-4 py-2.5 text-sm text-gray-800 outline-none transition focus:border-azure focus:bg-white focus:ring-4 focus:ring-azure/15";
 
 export default function ContactForm() {
   const [form, setForm] = useState(emptyForm);
@@ -40,7 +40,7 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       className="p-8 md:p-10"
     >
-      <h2 className="text-xl font-semibold text-navy">Send us a message</h2>
+      <h2 className="text-2xl font-bold text-navy">Send us a message</h2>
 
       <div className="mt-4 space-y-4">
         <div>
@@ -120,18 +120,18 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-6 rounded-lg bg-navy px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-navy/90 disabled:opacity-60"
+        className="mt-6 rounded-full bg-accent-deep px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-navy disabled:translate-y-0 disabled:opacity-60"
       >
         {status === "sending" ? "Sending..." : "Send message"}
       </button>
 
       {status === "success" && (
-        <p className="mt-4 text-sm text-green-700">
+        <p role="status" className="mt-4 rounded-xl bg-leaf/10 px-4 py-3 text-sm font-medium text-leaf-deep">
           Thank you. Your message has been sent.
         </p>
       )}
       {status === "error" && (
-        <p className="mt-4 text-sm text-red-600">
+        <p role="alert" className="mt-4 rounded-xl bg-accent/10 px-4 py-3 text-sm font-medium text-accent-deep">
           Something went wrong. Please try again or call us.
         </p>
       )}

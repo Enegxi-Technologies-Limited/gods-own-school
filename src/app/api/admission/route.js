@@ -1,6 +1,6 @@
 import { sendMail } from "@/lib/mail";
+import { classLevels as CLASSES } from "@/lib/site";
 
-const CLASSES = ["JSS 1", "JSS 2", "JSS 3", "SS 1", "SS 2", "SS 3"];
 const GENDERS = ["Male", "Female"];
 
 function clean(value) {

@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const classes = ["JSS 1", "JSS 2", "JSS 3", "SS 1", "SS 2", "SS 3"];
+import { classLevels as classes } from "@/lib/site";
 
 const emptyForm = {
   studentName: "",
@@ -19,7 +18,7 @@ const emptyForm = {
 };
 
 const inputClass =
-  "mt-1 w-full rounded-lg border border-navy/20 bg-white px-3 py-2 text-sm text-gray-800 outline-none focus:border-navy focus:ring-2 focus:ring-navy/20";
+  "mt-1.5 w-full rounded-xl border border-navy/15 bg-paper px-4 py-2.5 text-sm text-gray-800 outline-none transition focus:border-azure focus:bg-white focus:ring-4 focus:ring-azure/15";
 
 function Field({ label, id, optional, children }) {
   return (
@@ -65,7 +64,7 @@ export default function AdmissionForm() {
 
   return (
     <form onSubmit={handleSubmit} className="p-8 md:p-10">
-      <h2 className="text-xl font-semibold text-navy">Admission form</h2>
+      <h2 className="text-2xl font-bold text-navy">Admission form</h2>
 
       <fieldset className="mt-6">
         <legend className="mb-4 text-xs font-semibold uppercase tracking-wide text-navy/70">
@@ -237,7 +236,7 @@ export default function AdmissionForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-8 rounded-lg bg-navy px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-navy/90 disabled:opacity-60"
+        className="mt-8 rounded-full bg-accent-deep px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition hover:-translate-y-0.5 hover:bg-navy disabled:translate-y-0 disabled:opacity-60"
       >
         {status === "sending" ? "Submitting..." : "Submit application"}
       </button>
@@ -248,13 +247,13 @@ export default function AdmissionForm() {
       </p>
 
       {status === "success" && (
-        <p className="mt-4 text-sm text-green-700">
+        <p role="status" className="mt-4 rounded-xl bg-leaf/10 px-4 py-3 text-sm font-medium text-leaf-deep">
           Thank you. Your application has been received. The school will
           contact you.
         </p>
       )}
       {status === "error" && (
-        <p className="mt-4 text-sm text-red-600">
+        <p role="alert" className="mt-4 rounded-xl bg-accent/10 px-4 py-3 text-sm font-medium text-accent-deep">
           Something went wrong. Please try again or call the school.
         </p>
       )}

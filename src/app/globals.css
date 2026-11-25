@@ -1,13 +1,47 @@
 @import "tailwindcss";
 
+/* Palette taken from the school logo: navy and sky blue, plus the red, gold and green of the books.
+   Use the -deep shades for text, or for backgrounds behind white text, to keep WCAG AA contrast. */
 @theme {
   --color-navy: #1f2a5c;
   --color-azure: #3a9fd0;
+  --color-azure-deep: #1f77a8;
+  --color-sky: #e6f4fb;
   --color-accent: #d6456b;
+  --color-accent-deep: #c13a5e;
+  --color-sun: #f5b301;
+  --color-leaf: #2f9e5b;
+  --color-leaf-deep: #23804a;
   --color-paper: #f6f9fc;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
   background-color: var(--color-paper);
   color: #1f2937;
+}
+
+::selection {
+  background-color: var(--color-sun);
+  color: var(--color-navy);
+}
+
+/* Soft dotted texture used behind coloured sections. */
+.bg-dots {
+  background-image: radial-gradient(
+    currentColor 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
 }
